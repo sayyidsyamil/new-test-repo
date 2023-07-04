@@ -1,34 +1,25 @@
 ```javascript
-let activeTabId;
-let summaryData;
+let summary = '';
 
-// Function to display the summarized text
-function displaySummary() {
-  const summaryContainer = document.getElementById('summaryContainer');
-  summaryContainer.textContent = summaryData;
-}
-
-// Function to open the options page
-function openOptions() {
-  chrome.runtime.openOptionsPage();
-}
-
-// Event listener for the summarize button
-document.getElementById('summaryButton').addEventListener('click', () => {
-  chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
-    activeTabId = tabs[0].id;
-    chrome.tabs.sendMessage(activeTabId, {name: 'summarize'});
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('summarizeButton').addEventListener('click', summarizeText);
+  chrome.runtime.sendMessage({type: 'loadOptions'}, (response) => {
+    document.getElementById('optionsForm').value = response.userOptions;
   });
 });
 
-// Event listener for the options button
-document.getElementById('optionsButton').addEventListener('click', openOptions);
+function summarizeText() {
+  chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+    chrome.tabs.sendMessage(tabs[0].id, {type: 'summarizeText'}, (response) => {
+      if (response) {
+        summary = response.summary;
+        updateSummary();
+      }
+    });
+  });
+}
 
-// Listener for messages from the content script
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.name === 'summaryResult') {
-    summaryData = request.data;
-    displaySummary();
-  }
-});
+function updateSummary() {
+  document.getElementById('summaryContainer').textContent = summary;
+}
 ```
