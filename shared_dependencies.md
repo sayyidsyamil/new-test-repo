@@ -1,33 +1,23 @@
 Shared Dependencies:
 
-1. **Exported Variables**: 
-    - `activeTabId`: The ID of the currently active tab, used in `background.js`, `content.js`, and `popup.js`.
-    - `summaryData`: The summarized text data, used in `content.js` and `popup.js`.
+1. Exported Variables:
+   - `openaiApiKey`: The API key for OpenAI API, used in `openai_api.js` and `background.js`.
+   - `summary`: The summarized text, used in `content.js`, `background.js`, and `popup.js`.
 
-2. **Data Schemas**: 
-    - `Summary`: The schema for the summarized text, used in `content.js` and `popup.js`.
+2. Data Schemas:
+   - `userOptions`: A schema for user preferences, used in `options.js`, `background.js`, and `popup.js`.
 
-3. **DOM Element IDs**: 
-    - `summaryButton`: The ID of the button to trigger the summarization, used in `popup.html` and `popup.js`.
-    - `summaryContainer`: The ID of the container to display the summarized text, used in `popup.html` and `popup.js`.
-    - `optionsButton`: The ID of the button to open the options page, used in `popup.html`, `popup.js`, `options.html`, and `options.js`.
+3. ID Names of DOM Elements:
+   - `summarizeButton`: The button to trigger summarization, used in `popup.html` and `popup.js`.
+   - `summaryContainer`: The container to display the summarized text, used in `popup.html` and `popup.js`.
+   - `optionsForm`: The form for user options, used in `options.html` and `options.js`.
 
-4. **Message Names**: 
-    - `summarize`: The name of the message to trigger the summarization, used in `background.js`, `content.js`, and `popup.js`.
-    - `summaryResult`: The name of the message to send the summarized text, used in `background.js`, `content.js`, and `popup.js`.
+4. Message Names:
+   - `summarizeText`: Message name for summarizing text, used in `content.js` and `background.js`.
+   - `updateOptions`: Message name for updating user options, used in `options.js` and `background.js`.
 
-5. **Function Names**: 
-    - `summarizeText()`: The function to summarize the text, used in `content.js` and `llm_api.js`.
-    - `displaySummary()`: The function to display the summarized text, used in `popup.js`.
-    - `openOptions()`: The function to open the options page, used in `popup.js` and `options.js`.
-
-6. **CSS Classes**: 
-    - `summaryStyle`: The CSS class for styling the summarized text, used in `popup.css` and `content.css`.
-    - `buttonStyle`: The CSS class for styling the buttons, used in `popup.css` and `options.css`.
-
-7. **API Endpoints**: 
-    - `https://chatgpt-api.shn.hk/v1/`: The endpoint for the LLM API, used in `llm_api.js`.
-
-8. **API Headers and Body**: 
-    - Headers: `Content-Type: application/json`
-    - Body: `{"model": "gpt-3.5-turbo", "messages": [{"role": "user", "content": "Hello, how are you?"}]}`: Used in `llm_api.js`.
+5. Function Names:
+   - `getSummary`: Function to get the summary from OpenAI API, used in `openai_api.js` and `background.js`.
+   - `updateSummary`: Function to update the summary in the popup, used in `popup.js` and `background.js`.
+   - `saveOptions`: Function to save user options, used in `options.js` and `background.js`.
+   - `loadOptions`: Function to load user options, used in `options.js` and `background.js`.

@@ -1,23 +1,32 @@
 ```javascript
+import { getSummary } from './openai_api.js';
+
+let userOptions = {};
+let summary = '';
+
 chrome.runtime.onInstalled.addListener(() => {
-  chrome.action.setBadgeBackgroundColor({ color: '#4688F1' });
-});
-
-let activeTabId = null;
-
-chrome.tabs.onActivated.addListener((activeInfo) => {
-  activeTabId = activeInfo.tabId;
+  chrome.storage.sync.set({ userOptions: { maxLength: 100 } });
 });
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.message === 'summarize') {
-    chrome.tabs.sendMessage(activeTabId, { message: 'summarize' });
+  if (request.message === 'summarizeText') {
+    getSummary(request.text, userOptions.maxLength)
+      .then(res => {
+        summary = res;
+        sendResponse({ summary });
+      })
+      .catch(err => console.error(err));
+    return true;
+  } else if (request.message === 'updateOptions') {
+    userOptions = request.userOptions;
+    chrome.storage.sync.set({ userOptions });
   }
 });
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.message === 'summaryResult') {
-    chrome.tabs.sendMessage(activeTabId, { message: 'summaryResult', summaryData: request.summaryData });
-  }
+chrome.action.onClicked.addListener((tab) => {
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    files: ['content.js']
+  });
 });
 ```
