@@ -1,23 +1,13 @@
-Shared Dependencies:
+The shared dependencies between the files "main.py" and "bardapi/core.py" are:
 
-1. Exported Variables:
-   - `openaiApiKey`: The API key for OpenAI API, used in `openai_api.js` and `background.js`.
-   - `summary`: The summarized text, used in `content.js`, `background.js`, and `popup.js`.
+1. Imported Libraries: Both files share the dependency on the 'bardapi' library. This library is imported in "main.py" and it's likely used in "bardapi/core.py" as it's part of the same package.
 
-2. Data Schemas:
-   - `userOptions`: A schema for user preferences, used in `options.js`, `background.js`, and `popup.js`.
+2. Variables: The 'token' variable is defined in "main.py" and used in "bardapi/core.py". This variable stores the \__Secure-1PSID cookie value.
 
-3. ID Names of DOM Elements:
-   - `summarizeButton`: The button to trigger summarization, used in `popup.html` and `popup.js`.
-   - `summaryContainer`: The container to display the summarized text, used in `popup.html` and `popup.js`.
-   - `optionsForm`: The form for user options, used in `options.html` and `options.js`.
+3. Function Names: The function 'type_response' is defined in "main.py" and it might be used in "bardapi/core.py". Another function 'chatbot' is also defined in "main.py" which uses the 'Bard' class from 'bardapi.core' and its method 'get_answer'.
 
-4. Message Names:
-   - `summarizeText`: Message name for summarizing text, used in `content.js` and `background.js`.
-   - `updateOptions`: Message name for updating user options, used in `options.js` and `background.js`.
+4. Class Names: The 'Bard' class from 'bardapi.core' is used in "main.py". This class and its methods are likely defined in "bardapi/core.py".
 
-5. Function Names:
-   - `getSummary`: Function to get the summary from OpenAI API, used in `openai_api.js` and `background.js`.
-   - `updateSummary`: Function to update the summary in the popup, used in `popup.js` and `background.js`.
-   - `saveOptions`: Function to save user options, used in `options.js` and `background.js`.
-   - `loadOptions`: Function to load user options, used in `options.js` and `background.js`.
+5. Data Schemas: The 'response' data schema is used in "main.py" and likely defined in "bardapi/core.py". It's used to store the response from the 'get_answer' method of the 'Bard' class.
+
+Note: As the code for "bardapi/core.py" is not provided, the dependencies for this file are assumed based on the usage in "main.py".
