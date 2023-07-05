@@ -1,0 +1,63 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body {
+    @apply bg-gray-900 text-white;
+}
+
+#topic-input {
+    @apply bg-gray-800 text-white rounded-lg p-2 my-4;
+}
+
+#subtopic-buttons {
+    @apply flex flex-wrap gap-2;
+}
+
+.subtopic-button {
+    @apply bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-4 py-2 m-2 transition-colors duration-200;
+}
+
+#note-display {
+    @apply bg-gray-800 text-white rounded-lg p-4 my-4;
+}
+
+.note-title {
+    @apply text-3xl font-bold mb-4;
+}
+
+.note-introduction {
+    @apply text-lg mb-4;
+}
+
+.note-section {
+    @apply mb-4;
+}
+
+.note-key-points {
+    @apply font-semibold;
+}
+
+.note-complex-explanation {
+    @apply text-sm italic;
+}
+
+.note-example {
+    @apply bg-gray-700 p-2 rounded-lg my-2;
+}
+
+.note-code-sample {
+    @apply bg-gray-700 p-2 rounded-lg my-2 font-mono text-sm;
+}
+
+.note-tips {
+    @apply text-yellow-400;
+}
+
+.note-summary {
+    @apply text-lg font-semibold mt-4;
+}
+
+.note-resources {
+    @apply text-blue-400 underline;
+}

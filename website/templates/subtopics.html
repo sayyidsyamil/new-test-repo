@@ -1,0 +1,24 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subtopics</title>
+    <link rel="stylesheet" href="/static/css/tailwind.css">
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="container mx-auto py-10">
+        <h1 class="text-4xl font-bold mb-4">Subtopics for: {{ topic }}</h1>
+        <div id="subtopic-buttons" class="grid grid-cols-2 gap-4">
+            {% for subtopic in subtopics %}
+                <button onclick="generateNote('{{ subtopic }}')" class="py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded">
+                    {{ subtopic }}
+                </button>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="/static/js/note_generator.js"></script>
+</body>
+</html>
+```
