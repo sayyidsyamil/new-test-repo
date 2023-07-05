@@ -1,0 +1,33 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Generator</title>
+    <link rel="stylesheet" href="/static/css/tailwind.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="container mx-auto py-10">
+        <h1 class="text-4xl font-bold mb-4" id="note-title"></h1>
+        <p class="text-lg mb-6" id="note-introduction"></p>
+        <div id="note-sections">
+            <!-- Sections will be dynamically generated here -->
+        </div>
+        <div class="mt-10">
+            <h2 class="text-2xl font-bold mb-2">Summary</h2>
+            <p id="note-summary"></p>
+        </div>
+        <div class="mt-10">
+            <h2 class="text-2xl font-bold mb-2">Resources</h2>
+            <ul id="note-resources">
+                <!-- Resources will be dynamically generated here -->
+            </ul>
+        </div>
+        <button class="mt-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="window.location.href='/';">Generate another note</button>
+    </div>
+    <script src="/static/js/note.js"></script>
+</body>
+</html>
+```

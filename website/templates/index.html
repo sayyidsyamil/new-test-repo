@@ -1,0 +1,26 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Generator</title>
+    <link rel="stylesheet" href="/static/css/tailwind.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="container mx-auto py-10">
+        <h1 class="text-4xl font-bold mb-10 text-center">Welcome to Note Generator</h1>
+        <div class="flex justify-center">
+            <input id="topic-input" class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Enter a topic">
+            <button onclick="generateSubtopics()" class="ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Generate Subtopics
+            </button>
+        </div>
+        <div id="subtopic-buttons" class="mt-10 flex flex-wrap justify-center"></div>
+        <div id="note-display" class="mt-10"></div>
+    </div>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
+```
