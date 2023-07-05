@@ -1,13 +1,13 @@
-The shared dependencies between the files "main.py" and "bardapi/core.py" are:
+1. Google Account Credentials: Both "main.py" and "google_auth.py" will need the user's Google account credentials to authenticate and log in.
 
-1. Imported Libraries: Both files share the dependency on the 'bardapi' library. This library is imported in "main.py" and it's likely used in "bardapi/core.py" as it's part of the same package.
+2. Google Authentication Function: The function to authenticate the user's Google account will be defined in "google_auth.py" and used in "main.py".
 
-2. Variables: The 'token' variable is defined in "main.py" and used in "bardapi/core.py". This variable stores the \__Secure-1PSID cookie value.
+3. Cookie Name: The name of the cookie ("\__Secure-1PSID") is shared between "main.py" and "cookie_extractor.py" as it is needed to extract the correct cookie.
 
-3. Function Names: The function 'type_response' is defined in "main.py" and it might be used in "bardapi/core.py". Another function 'chatbot' is also defined in "main.py" which uses the 'Bard' class from 'bardapi.core' and its method 'get_answer'.
+4. Domain Name: The domain name ("bard.google.com") is shared between "main.py" and "cookie_extractor.py" as it is needed to extract the cookie from the correct domain.
 
-4. Class Names: The 'Bard' class from 'bardapi.core' is used in "main.py". This class and its methods are likely defined in "bardapi/core.py".
+5. Cookie Extraction Function: The function to extract the cookie will be defined in "cookie_extractor.py" and used in "main.py".
 
-5. Data Schemas: The 'response' data schema is used in "main.py" and likely defined in "bardapi/core.py". It's used to store the response from the 'get_answer' method of the 'Bard' class.
+6. Extracted Cookie Value: The value of the extracted cookie is shared between "main.py" and "response_generator.py" as it is needed to generate the response.
 
-Note: As the code for "bardapi/core.py" is not provided, the dependencies for this file are assumed based on the usage in "main.py".
+7. Response Generation Function: The function to generate the response will be defined in "response_generator.py" and used in "main.py".

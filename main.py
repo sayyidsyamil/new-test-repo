@@ -1,20 +1,26 @@
-import time
-import bardapi
-import os
+```python
+import google_auth
+import cookie_extractor
+import response_generator
 
-# set your __Secure-1PSID value to key
-token = 'XwjWs8pYfkpFwVKBnGo_zYBolXeTygZpZWe1MbfdMasFKZkMQr6Gk4JarTcyrPORvGovAw.'
+def main():
+    # Get user's Google account credentials
+    username, password = google_auth.get_credentials()
 
-def type_response(response):
-    for char in response:
-        print(char, end='', flush=True)
-        time.sleep(0.005)
-    print()
+    # Authenticate the user's Google account
+    authenticated = google_auth.authenticate(username, password)
 
-def chatbot():
-    while True:
-        user_input = input('User: ')
-        response = bardapi.core.Bard(token).get_answer(user_input.lower())
-        type_response('Bot: ' + response['content'])
+    if authenticated:
+        # Extract the value of the __Secure-1PSID cookie from the bard.google.com domain
+        cookie_value = cookie_extractor.extract_cookie("__Secure-1PSID", "bard.google.com")
 
-chatbot()
+        # Generate a response from the extracted cookie value
+        response = response_generator.generate_response(cookie_value)
+
+        print(response)
+    else:
+        print("Authentication failed. Please check your credentials.")
+
+if __name__ == "__main__":
+    main()
+```
